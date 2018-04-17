@@ -12,8 +12,20 @@ namespace System_Core
         // caminho dos dados, acesso restrito ao núcleo
         private static String data_path = @"data.txt";
 
-        // realiza a leitura da posição X à Y
-        public static String Read(int x, int y)
+        // rotina de leitura aberta
+        public static String External_Read(int x, int y)
+        {
+            return Read(x, y);
+        }
+
+        // rotina de escrita aberta
+        public static bool External_Write(String value)
+        {
+            return Write(value);
+        }
+
+        // realiza a leitura da posição X à Y (interno ao Núcleo)
+        private static String Read(int x, int y)
         {
             try
             {
@@ -44,8 +56,8 @@ namespace System_Core
             }
         }
 
-        // realiza a escrita de um valor (String) no final do arquivo
-        public static bool Write(String value)
+        // realiza a escrita de um valor (String) no final do arquivo (interno ao Núcleo)
+        private static bool Write(String value)
         {
             try
             {
