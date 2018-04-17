@@ -1,0 +1,10 @@
+R:\GitHub\Sistemas-Operacionais\trabchamsis\Windows_Environment\Modo_Usuario\User\User\bin\Debug\User.exe.config
+R:\GitHub\Sistemas-Operacionais\trabchamsis\Windows_Environment\Modo_Usuario\User\User\bin\Debug\User.exe
+R:\GitHub\Sistemas-Operacionais\trabchamsis\Windows_Environment\Modo_Usuario\User\User\bin\Debug\User.pdb
+R:\GitHub\Sistemas-Operacionais\trabchamsis\Windows_Environment\Modo_Usuario\User\User\bin\Debug\Library.dll
+R:\GitHub\Sistemas-Operacionais\trabchamsis\Windows_Environment\Modo_Usuario\User\User\bin\Debug\System_Core.dll
+R:\GitHub\Sistemas-Operacionais\trabchamsis\Windows_Environment\Modo_Usuario\User\User\bin\Debug\Library.pdb
+R:\GitHub\Sistemas-Operacionais\trabchamsis\Windows_Environment\Modo_Usuario\User\User\bin\Debug\System_Core.pdb
+R:\GitHub\Sistemas-Operacionais\trabchamsis\Windows_Environment\Modo_Usuario\User\User\obj\Debug\User.csprojResolveAssemblyReference.cache
+R:\GitHub\Sistemas-Operacionais\trabchamsis\Windows_Environment\Modo_Usuario\User\User\obj\Debug\User.exe
+R:\GitHub\Sistemas-Operacionais\trabchamsis\Windows_Environment\Modo_Usuario\User\User\obj\Debug\User.pdb

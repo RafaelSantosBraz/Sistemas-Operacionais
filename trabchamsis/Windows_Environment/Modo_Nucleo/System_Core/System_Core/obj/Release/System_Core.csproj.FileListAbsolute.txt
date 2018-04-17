@@ -1,0 +1,4 @@
+R:\GitHub\Sistemas-Operacionais\trabchamsis\Windows_Environment\Modo_Nucleo\System_Core\System_Core\bin\Release\System_Core.dll
+R:\GitHub\Sistemas-Operacionais\trabchamsis\Windows_Environment\Modo_Nucleo\System_Core\System_Core\bin\Release\System_Core.pdb
+R:\GitHub\Sistemas-Operacionais\trabchamsis\Windows_Environment\Modo_Nucleo\System_Core\System_Core\obj\Release\System_Core.dll
+R:\GitHub\Sistemas-Operacionais\trabchamsis\Windows_Environment\Modo_Nucleo\System_Core\System_Core\obj\Release\System_Core.pdb

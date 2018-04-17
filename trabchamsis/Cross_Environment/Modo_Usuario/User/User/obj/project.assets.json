@@ -1,0 +1,34 @@
+{
+  "version": 2,
+  "targets": {
+    ".NETCoreApp,Version=v1.1": {}
+  },
+  "libraries": {},
+  "projectFileDependencyGroups": {
+    ".NETCoreApp,Version=v1.1": []
+  },
+  "packageFolders": {
+    "C:\\Users\\rafin\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "R:\\GitHub\\Sistemas-Operacionais\\trabchamsis\\Modo_Usuario\\User\\User\\User.csproj",
+      "projectName": "User",
+      "projectPath": "R:\\GitHub\\Sistemas-Operacionais\\trabchamsis\\Modo_Usuario\\User\\User\\User.csproj",
+      "outputPath": "R:\\GitHub\\Sistemas-Operacionais\\trabchamsis\\Modo_Usuario\\User\\User\\obj\\",
+      "projectStyle": "PackageReference",
+      "originalTargetFrameworks": [
+        "netcoreapp1.1"
+      ],
+      "frameworks": {
+        "netcoreapp1.1": {
+          "projectReferences": {}
+        }
+      }
+    },
+    "frameworks": {
+      "netcoreapp1.1": {}
+    }
+  }
+}
