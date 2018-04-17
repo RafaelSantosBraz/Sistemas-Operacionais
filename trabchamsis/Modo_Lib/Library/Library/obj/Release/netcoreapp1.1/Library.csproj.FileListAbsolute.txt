@@ -1,8 +1,0 @@
-R:\GitHub\Sistemas-Operacionais\trabchamsis\Modo_Lib\Library\Library\bin\Release\netcoreapp1.1\Library.deps.json
-R:\GitHub\Sistemas-Operacionais\trabchamsis\Modo_Lib\Library\Library\bin\Release\netcoreapp1.1\Library.dll
-R:\GitHub\Sistemas-Operacionais\trabchamsis\Modo_Lib\Library\Library\bin\Release\netcoreapp1.1\Library.pdb
-R:\GitHub\Sistemas-Operacionais\trabchamsis\Modo_Lib\Library\Library\bin\Release\netcoreapp1.1\System_Core.dll
-R:\GitHub\Sistemas-Operacionais\trabchamsis\Modo_Lib\Library\Library\obj\Release\netcoreapp1.1\Library.csprojResolveAssemblyReference.cache
-R:\GitHub\Sistemas-Operacionais\trabchamsis\Modo_Lib\Library\Library\obj\Release\netcoreapp1.1\Library.AssemblyInfo.cs
-R:\GitHub\Sistemas-Operacionais\trabchamsis\Modo_Lib\Library\Library\obj\Release\netcoreapp1.1\Library.dll
-R:\GitHub\Sistemas-Operacionais\trabchamsis\Modo_Lib\Library\Library\obj\Release\netcoreapp1.1\Library.pdb

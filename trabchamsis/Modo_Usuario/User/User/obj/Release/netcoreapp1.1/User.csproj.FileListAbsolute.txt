@@ -1,9 +1,0 @@
-R:\GitHub\Sistemas-Operacionais\trabchamsis\Modo_Usuario\User\User\bin\Release\netcoreapp1.1\User.deps.json
-R:\GitHub\Sistemas-Operacionais\trabchamsis\Modo_Usuario\User\User\bin\Release\netcoreapp1.1\User.runtimeconfig.json
-R:\GitHub\Sistemas-Operacionais\trabchamsis\Modo_Usuario\User\User\bin\Release\netcoreapp1.1\User.runtimeconfig.dev.json
-R:\GitHub\Sistemas-Operacionais\trabchamsis\Modo_Usuario\User\User\bin\Release\netcoreapp1.1\User.dll
-R:\GitHub\Sistemas-Operacionais\trabchamsis\Modo_Usuario\User\User\bin\Release\netcoreapp1.1\User.pdb
-R:\GitHub\Sistemas-Operacionais\trabchamsis\Modo_Usuario\User\User\obj\Release\netcoreapp1.1\User.csprojResolveAssemblyReference.cache
-R:\GitHub\Sistemas-Operacionais\trabchamsis\Modo_Usuario\User\User\obj\Release\netcoreapp1.1\User.AssemblyInfo.cs
-R:\GitHub\Sistemas-Operacionais\trabchamsis\Modo_Usuario\User\User\obj\Release\netcoreapp1.1\User.dll
-R:\GitHub\Sistemas-Operacionais\trabchamsis\Modo_Usuario\User\User\obj\Release\netcoreapp1.1\User.pdb

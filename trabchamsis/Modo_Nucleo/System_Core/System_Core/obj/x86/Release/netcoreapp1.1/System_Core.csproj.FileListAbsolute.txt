@@ -1,7 +1,0 @@
-R:\GitHub\Sistemas-Operacionais\trabchamsis\Modo_Nucleo\System_Core\System_Core\bin\x86\Release\netcoreapp1.1\System_Core.deps.json
-R:\GitHub\Sistemas-Operacionais\trabchamsis\Modo_Nucleo\System_Core\System_Core\bin\x86\Release\netcoreapp1.1\System_Core.dll
-R:\GitHub\Sistemas-Operacionais\trabchamsis\Modo_Nucleo\System_Core\System_Core\bin\x86\Release\netcoreapp1.1\System_Core.pdb
-R:\GitHub\Sistemas-Operacionais\trabchamsis\Modo_Nucleo\System_Core\System_Core\obj\x86\Release\netcoreapp1.1\System_Core.AssemblyInfo.cs
-R:\GitHub\Sistemas-Operacionais\trabchamsis\Modo_Nucleo\System_Core\System_Core\obj\x86\Release\netcoreapp1.1\System_Core.dll
-R:\GitHub\Sistemas-Operacionais\trabchamsis\Modo_Nucleo\System_Core\System_Core\obj\x86\Release\netcoreapp1.1\System_Core.pdb
-R:\GitHub\Sistemas-Operacionais\trabchamsis\Modo_Nucleo\System_Core\System_Core\obj\x86\Release\netcoreapp1.1\System_Core.csprojResolveAssemblyReference.cache
