@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.IO;
 
 namespace System_Core
@@ -6,7 +10,7 @@ namespace System_Core
     public static class Core
     {
         // caminho dos dados, acesso restrito ao núcleo
-        private static String data_path = @"data.txt";        
+        private static String data_path = @"data.txt";
 
         // realiza a leitura da posição X à Y
         public static String Read(int x, int y)
@@ -31,7 +35,6 @@ namespace System_Core
                         return null;
                     }
                 }
-                reader.Dispose();
                 return text;
             }
             catch

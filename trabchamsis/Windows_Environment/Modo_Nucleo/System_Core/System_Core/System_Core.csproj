@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B1AACDB3-F7BC-45C9-BDFF-2D7ED894B72F}</ProjectGuid>
+    <ProjectGuid>{2883FF12-56EC-43AF-973C-F3B55237B5CF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Library</RootNamespace>
-    <AssemblyName>Library</AssemblyName>
+    <RootNamespace>System_Core</RootNamespace>
+    <AssemblyName>System_Core</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -38,12 +38,9 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="System_Core">
-      <HintPath>..\..\..\Modo_Nucleo\System_Core\System_Core\bin\Release\System_Core.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Lib.cs" />
+    <Compile Include="Core.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
