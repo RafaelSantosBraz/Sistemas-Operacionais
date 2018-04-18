@@ -64,8 +64,15 @@ namespace System_Core
                 FileStream data = File.Open(data_path, FileMode.OpenOrCreate);
                 StreamWriter writer = new StreamWriter(data);
                 StreamReader reader = new StreamReader(data);
-                // apenas descarta os caracteres anteriores no arquivo
-                reader.ReadToEnd();
+                if (data.Length == 0)
+                {
+                    data.Position = 0;
+                }
+                else
+                {
+                    data.Position = data.Length - 1;
+                }
+                //reader.ReadToEnd();
                 writer.Write(value);
                 // gravação física das alterações no objeto
                 writer.Dispose();
