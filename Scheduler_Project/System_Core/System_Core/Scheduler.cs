@@ -22,7 +22,12 @@ namespace System_Core
             }
         }
 
-        public static void insertion_processes(List<Process> processes)
+        public static void schedule(Object source, System.Timers.ElapsedEventArgs e)
+        {
+            
+        } 
+
+        public static bool insertion_processes(List<Process> processes)
         {
             switch (rule)
             {
@@ -33,9 +38,10 @@ namespace System_Core
                         {
                             ready.Add(aux);
                         }
-                        break;
+                        return true;
                     }
             }
+            return false;
         }
 
         private static bool change_rule(int new_rule)
