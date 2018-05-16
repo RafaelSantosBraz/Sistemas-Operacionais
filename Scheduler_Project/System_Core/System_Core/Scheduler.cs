@@ -22,6 +22,22 @@ namespace System_Core
             }
         }
 
+        public static void insertion_processes(List<Process> processes)
+        {
+            switch (rule)
+            {
+                case 1:
+                    {
+                        ready = new List<Process>();
+                        foreach (Process aux in processes)
+                        {
+                            ready.Add(aux);
+                        }
+                        break;
+                    }
+            }
+        }
+
         private static bool change_rule(int new_rule)
         {
             if (new_rule > 0 && new_rule < 6)
