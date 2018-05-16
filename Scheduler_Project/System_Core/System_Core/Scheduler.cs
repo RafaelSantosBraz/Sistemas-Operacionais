@@ -24,7 +24,8 @@ namespace System_Core
 
         public static void schedule(Object source, System.Timers.ElapsedEventArgs e)
         {
-            
+            Process running = select();
+            running.execute();
         } 
 
         public static bool insertion_processes(List<Process> processes)
@@ -65,9 +66,10 @@ namespace System_Core
             }
             else
             {
-                Process selected = ready.ElementAt(0);
+                Process selected = ready.ElementAt(0);                
                 ready.RemoveAt(0);
                 ready.Add(selected);
+                Console.WriteLine("---> Selected reason: FIFO");
                 return selected;
             }
         }
