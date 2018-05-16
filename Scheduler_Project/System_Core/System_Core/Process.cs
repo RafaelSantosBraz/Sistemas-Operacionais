@@ -10,11 +10,12 @@ namespace System_Core
     public class Process
     {
         private int UUID;
-        
+        private int original_priority;
+
         public Process(int UUID)
         {
             this.UUID = UUID;
-        }
+        }       
 
         public void execute()
         {
