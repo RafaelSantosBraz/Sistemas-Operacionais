@@ -8,11 +8,10 @@ namespace System_Core
 {
     static class Scheduler
     {
-        private static List<Container> ready = new List<Container>();
+        private static List<Process> ready = new List<Process>();
         private static int rule = 1;
-        static Object a;
 
-        public static Container select()
+        public static Process select()
         {
             switch (rule)
             {
@@ -36,7 +35,7 @@ namespace System_Core
             }
         }
 
-        private static Container FIFO()
+        private static Process FIFO()
         {
             if (ready.Count == 0)
             {
@@ -44,7 +43,7 @@ namespace System_Core
             }
             else
             {
-                Container selected = ready.ElementAt(0);
+                Process selected = ready.ElementAt(0);
                 ready.RemoveAt(0);
                 ready.Add(selected);
                 return selected;
