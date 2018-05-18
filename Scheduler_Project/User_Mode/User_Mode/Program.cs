@@ -14,8 +14,9 @@ namespace User_Mode
             List<Process> processes = new List<Process>();
             for (int i = 0; i < 10; i++)
             {
-                processes.Add(new Process(i));
+                processes.Add(new Process(i) { Original_priority = 1 });
             }
+            processes[0].Original_priority = 2;
             Console.WriteLine("Inserção de Processos: " + Kernel.load_processes(processes));
             Kernel.start_time_sharing();
             Console.ReadKey();

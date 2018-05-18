@@ -11,11 +11,15 @@ namespace System_Core
     {
         private int UUID;
         private int original_priority;
+        private int current_priority;
 
         public Process(int UUID)
         {
             this.UUID = UUID;
-        }       
+        }
+
+        public int Original_priority { get => original_priority; set => original_priority = value; }
+        public int Current_priority { get => current_priority; set => current_priority = value; }
 
         public void execute()
         {

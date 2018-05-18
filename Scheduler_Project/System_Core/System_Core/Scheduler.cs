@@ -17,6 +17,8 @@ namespace System_Core
             {
                 case 1:
                     return FIFO();
+                case 2:
+                    return Priority();
                 default:
                     return null;
             }
@@ -26,7 +28,7 @@ namespace System_Core
         {
             Process running = select();
             running.execute();
-        } 
+        }
 
         public static bool insertion_processes(List<Process> processes)
         {
@@ -34,10 +36,16 @@ namespace System_Core
             {
                 case 1:
                     {
-                        ready = new List<Process>();
-                        foreach (Process aux in processes)
+                        ready = processes;
+                        return true;
+                    }
+                case 2:
+                    {
+                        ready = processes;
+                        ready.Sort((x, y) => x.Original_priority - y.Original_priority);
+                        foreach (Process aux in ready)
                         {
-                            ready.Add(aux);
+                            aux.Current_priority = aux.Original_priority;
                         }
                         return true;
                     }
@@ -66,12 +74,17 @@ namespace System_Core
             }
             else
             {
-                Process selected = ready.ElementAt(0);                
+                Process selected = ready.ElementAt(0);
                 ready.RemoveAt(0);
                 ready.Add(selected);
-                Console.WriteLine("---> Selected reason: FIFO");
+                Console.WriteLine("---> Selection reason: FIFO");
                 return selected;
             }
+        }
+
+        private static Process Priority()
+        {
+            return new Process(1);
         }
     }
 }
