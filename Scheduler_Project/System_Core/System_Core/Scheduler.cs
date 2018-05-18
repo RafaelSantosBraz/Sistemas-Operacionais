@@ -8,9 +8,12 @@ namespace System_Core
 {
     static class Scheduler
     {
+        // lista dos processos em estado "pronto"
         private static List<Process> ready = new List<Process>();
-        private static int rule = 2;
+        // define qual regra será utilizada pelo escalonador para escolha do processo
+        private static int rule = 1;
 
+        // método para direcionar a tarefa de escolha do processo para uma rotina específica (regra) 
         public static Process select()
         {
             switch (rule)
@@ -24,25 +27,31 @@ namespace System_Core
             }
         }
 
+        // processo mais amplo - chama a seleção e depois executa o processo selecionado
         public static void schedule(Object source, System.Timers.ElapsedEventArgs e)
         {
             Process running = select();
             running.execute();
         }
 
+        // faz a organização/formatação dos processos de alto nível no contexto do núcleo do SO de acordo com a regra especificada
         public static bool insertion_processes(List<Process> processes)
         {
             switch (rule)
             {
                 case 1:
                     {
+                        // caso FIFO - não é preciso alterar os processos
                         ready = processes;
                         return true;
                     }
                 case 2:
                     {
+                        // caso Prioridade - necessário tratar a prioridade corrente
                         ready = processes;
+                        // ordena os processos pela prioridade original
                         ready.Sort((x, y) => x.Original_priority - y.Original_priority);
+                        // copia a prioridade original para a corrente
                         foreach (Process aux in ready)
                         {
                             aux.Current_priority = aux.Original_priority;
@@ -53,25 +62,28 @@ namespace System_Core
             return false;
         }
 
-        private static bool change_rule(int new_rule)
+        // método para alterar a regra atual do escalonador
+        public static bool change_rule(int new_rule)
         {
             if (new_rule > 0 && new_rule < 6)
-            {
-                return false;
-            }
-            else
             {
                 rule = new_rule;
                 return true;
             }
+            else
+            {
+                return false;
+            }
         }
 
+        // rotina para escalonar por FIFO de lista circular
         private static Process FIFO()
         {
             if (ready.Count == 0)
             {
                 return null;
             }
+            // sempre o primeiro elemento da lista
             else
             {
                 Process selected = ready.ElementAt(0);
@@ -82,6 +94,7 @@ namespace System_Core
             }
         }
 
+        // rotina para escalonar por Prioridade
         private static Process Priority()
         {
             if (ready.Count == 0)
@@ -90,15 +103,19 @@ namespace System_Core
             }
             else
             {
+                // cria uma nova lista com os processos de mesma e maior prioridade atual
                 List<Process> bigger = ready.FindAll(process => process.Current_priority == ready.Max(process_aux => process_aux.Current_priority));
+                // ordena a nova lista por prioridade original
                 bigger.Sort((x, y) => x.Original_priority - y.Original_priority);
+                // o último elemento será o de maior prioridade, e será selecionado
                 Process selected = bigger.Last();
                 if (selected.Current_priority == 0)
                 {
+                    // não há processos escalonáveis, assim deve-se rearranjar a lista antes de escalonar
                     insertion_processes(ready);
                     return select();
                 }
-                //ready.ForEach(process => Console.WriteLine(process.Current_priority));
+                // apenas definições de motivo de seleção
                 if (bigger.Count == 1)
                 {
                     Console.WriteLine("---> Motivo de Seleção: prioridade - maior prioridade atual");

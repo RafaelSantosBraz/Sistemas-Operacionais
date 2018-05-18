@@ -10,12 +10,15 @@ namespace User_Mode
     class Program
     {
         static void Main(string[] args)
-        {       
+        {
+            // solicita (INADEQUADAMENTE! - apenas para teste!) a troca de regra ao núcleo e ao escalonador
+            Kernel.change_rule_scheduler(2);
             Console.WriteLine("Iniciando escalonador e inserindo processos... (" + Kernel.load_processes(process_generator(1)) + ")\n");
             Kernel.start_time_sharing();
             Console.ReadKey();
         }
 
+        // gera a lista de processos em alto nível para uma regra de escalonamento
         public static List<Process> process_generator(int rule_type)
         {
             List<Process> processes = new List<Process>();
