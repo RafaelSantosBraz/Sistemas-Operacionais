@@ -46,7 +46,6 @@ namespace System_Core
                         foreach (Process aux in ready)
                         {
                             aux.Current_priority = aux.Original_priority;
-                            aux.Difference = 0;
                         }
                         return true;
                     }
@@ -91,24 +90,25 @@ namespace System_Core
             }
             else
             {
-                Process selected = ready.Last();
+                List<Process> bigger = ready.FindAll(process => process.Current_priority == ready.Max(process_aux => process_aux.Current_priority));
+                bigger.Sort((x, y) => x.Original_priority - y.Original_priority);
+                Process selected = bigger.Last();
                 if (selected.Current_priority == 0)
                 {
                     insertion_processes(ready);
-                    selected = ready.Last();
-                }                            
-                Console.WriteLine("---> Selection reason: Priority");
-                selected.Current_priority -= 1;
-                selected.Difference = selected.Original_priority - selected.Current_priority;
-                ready.Sort((x, y) => x.Current_priority - y.Current_priority);
-                ready.ForEach(process => Console.WriteLine(process.UUID1));                
+                    return select();
+                }
+                //ready.ForEach(process => Console.WriteLine(process.Current_priority));
+                if (bigger.Count == 1)
+                {
+                    Console.WriteLine("---> Motivo de Seleção: prioridade - maior prioridade atual");
+                    selected.Current_priority--;
+                    return selected;
+                }
+                Console.WriteLine("---> Motivo de Seleção: prioridade - empate - último elemento de mesma prioridade");
+                selected.Current_priority--;
                 return selected;
             }
-        }
-
-        private static List<Process> crescent_order(List<Process>)
-        {
-            return new List<Process>();
-        }
-    }   
+        }       
+    }
 }
