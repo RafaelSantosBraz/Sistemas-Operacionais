@@ -15,7 +15,7 @@ namespace System_Core
 
         public Process(int UUID)
         {
-            this.UUID1 = UUID;
+           UUID1 = UUID;
         }
 
         public int Original_priority { get => original_priority; set => original_priority = value; }
@@ -24,7 +24,7 @@ namespace System_Core
 
         public void execute()
         {
-            Console.WriteLine("Executando o Processo " + UUID1 + "...");
+            Console.WriteLine("Executando o Processo " + UUID1 + "...\n");
         }
     }
 }

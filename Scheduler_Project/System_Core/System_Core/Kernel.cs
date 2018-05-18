@@ -21,7 +21,7 @@ namespace System_Core
             clock = new Timer();
             clock.Interval = 5000;
             clock.Elapsed += Scheduler.schedule;
-            clock.Enabled = true;
+            clock.Enabled = true;            
         }
 
         public static void close_time_sharing()
