@@ -16,9 +16,9 @@ namespace User_Mode
             processes.Add(new Process(1) { Original_priority = 2 });
             processes.Add(new Process(2) { Original_priority = 3 });
             processes.Add(new Process(3) { Original_priority = 1 });
-            Console.WriteLine("Inserção de Processos: " + Kernel.load_processes(processes));
+            //Console.WriteLine("Inserção de Processos: " + Kernel.load_processes(processes));
             Kernel.start_time_sharing();
-            Console.ReadKey();
+            //Console.ReadKey();
         }
     }
 }

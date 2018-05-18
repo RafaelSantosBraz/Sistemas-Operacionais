@@ -77,7 +77,7 @@ namespace System_Core
                 Process selected = ready.ElementAt(0);
                 ready.RemoveAt(0);
                 ready.Add(selected);
-                Console.WriteLine("---> Selection reason: FIFO");
+                Console.WriteLine("---> Motivo de Seleção: FIFO - primeiro elemento da lista");
                 return selected;
             }
         }
