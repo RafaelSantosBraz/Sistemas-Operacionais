@@ -12,11 +12,10 @@ namespace User_Mode
         static void Main(string[] args)
         {
             List<Process> processes = new List<Process>();
-            for (int i = 0; i < 10; i++)
-            {
-                processes.Add(new Process(i) { Original_priority = 1 });
-            }
-            processes[0].Original_priority = 2;
+            processes.Add(new Process(0) {Original_priority = 1 });
+            processes.Add(new Process(1) { Original_priority = 2 });
+            processes.Add(new Process(2) { Original_priority = 3 });
+            processes.Add(new Process(3) { Original_priority = 1 });
             Console.WriteLine("Inserção de Processos: " + Kernel.load_processes(processes));
             Kernel.start_time_sharing();
             Console.ReadKey();

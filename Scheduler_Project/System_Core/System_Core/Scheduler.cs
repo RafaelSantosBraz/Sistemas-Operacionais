@@ -9,7 +9,7 @@ namespace System_Core
     static class Scheduler
     {
         private static List<Process> ready = new List<Process>();
-        private static int rule = 1;
+        private static int rule = 2;
 
         public static Process select()
         {
@@ -46,6 +46,7 @@ namespace System_Core
                         foreach (Process aux in ready)
                         {
                             aux.Current_priority = aux.Original_priority;
+                            aux.Difference = 0;
                         }
                         return true;
                     }
@@ -84,7 +85,30 @@ namespace System_Core
 
         private static Process Priority()
         {
-            return new Process(1);
+            if (ready.Count == 0)
+            {
+                return null;
+            }
+            else
+            {
+                Process selected = ready.Last();
+                if (selected.Current_priority == 0)
+                {
+                    insertion_processes(ready);
+                    selected = ready.Last();
+                }                            
+                Console.WriteLine("---> Selection reason: Priority");
+                selected.Current_priority -= 1;
+                selected.Difference = selected.Original_priority - selected.Current_priority;
+                ready.Sort((x, y) => x.Current_priority - y.Current_priority);
+                ready.ForEach(process => Console.WriteLine(process.UUID1));                
+                return selected;
+            }
         }
-    }
+
+        private static List<Process> crescent_order(List<Process>)
+        {
+            return new List<Process>();
+        }
+    }   
 }
