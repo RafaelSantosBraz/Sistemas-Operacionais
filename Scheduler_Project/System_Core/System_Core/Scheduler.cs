@@ -17,7 +17,9 @@ namespace System_Core
         // agente para sorteio de bilhetes
         private static Random agent = new Random();
         // indica quem é o dono do processo executado por último
-        private static int current_user;
+        private static User current_user;
+        // indica quais são os usuários donos de processos
+        private static List<User> users;
 
         // método para direcionar a tarefa de escolha do processo para uma rotina específica (regra) 
         public static Process select()
@@ -89,12 +91,29 @@ namespace System_Core
                         ready = processes;
                         // ordena os processos pela prioridade original
                         ready.Sort((x, y) => x.Original_priority - y.Original_priority);
+                        // armazena temporariamente os 
+                        List<int> ids = new List<int>();
+                        List<int> quantify_processs = new List<int>();
                         // copia a prioridade original para a corrente
                         foreach (Process aux in ready)
                         {
                             aux.Current_priority = aux.Original_priority;
+                            if (ids.Exists(id => id == aux.Owner))
+                            {
+                                quantify_processs[ids.IndexOf(aux.Owner)] += 1;
+                            }
+                            else
+                            {
+                                ids.Add(aux.Owner);
+                                quantify_processs.Add(1);                                
+                            }
                         }
-                        current_user = -1;
+                        users = new List<User>();
+                        foreach (int id in ids)
+                        {
+                            users.Add(new User(id, quantify_processs.ElementAt(id)));
+                        }
+                        current_user = users.ElementAt(0);
                         return true;
                     }
             }
