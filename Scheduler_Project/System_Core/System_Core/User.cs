@@ -18,6 +18,7 @@ namespace System_Core
         public User(int id, int quantify_max_process)
         {
             Id = id;
+            // Regra de Justiça: sempre metade dos processos por usuário
             Max_portion = (int)Math.Ceiling(quantify_max_process / 2.0);
         }
 

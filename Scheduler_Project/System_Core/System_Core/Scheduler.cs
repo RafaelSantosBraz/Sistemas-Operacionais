@@ -20,6 +20,10 @@ namespace System_Core
         private static User current_user;
         // indica quais são os usuários donos de processos
         private static List<User> users;
+        // indica quem é a fila de prioridade executada por último
+        private static Queue current_queue;
+        // indica quais são as filas de prioridade existentes
+        private static List<Queue> queues;
 
         // método para direcionar a tarefa de escolha do processo para uma rotina específica (regra) 
         public static Process select()
@@ -34,6 +38,8 @@ namespace System_Core
                     return Lottery();
                 case 4:
                     return Portion_fair();
+                case 5:
+                    return Priority_queue();
             }
             return null;
         }
@@ -118,6 +124,35 @@ namespace System_Core
                         users.Sort((x, y) => x.Id - y.Id);
                         // primeiro ID é o executado
                         current_user = users.ElementAt(0);
+                        return true;
+                    }
+                case 5:
+                    {
+                        // caso Fila de Prioridade
+                        ready = processes;
+                        // ordena os processos pela prioridade original
+                        ready.Sort((x, y) => x.Original_priority - y.Original_priority);
+                        // armazena temporariamente as prioridades das filas
+                        List<int> queues_priorities = new List<int>();
+                        foreach (Process aux in ready)
+                        {
+                            aux.Current_priority = aux.Original_priority;
+                            // atualiza a prioridade da lista, caso não exista
+                            if (!queues_priorities.Exists(queue => queue == aux.Original_priority))
+                            {
+                                queues_priorities.Add(aux.Original_priority);
+                            }
+                        }
+                        queues = new List<Queue>();
+                        foreach (int id in queues_priorities)
+                        {
+                            // conversão para tipo fila
+                            queues.Add(new Queue(id, queues_priorities.Count));
+                        }
+                        // ordena as filas por suas respectivas prioridades
+                        queues.Sort((x, y) => x.Priority_of_list - y.Priority_of_list);
+                        // fila de maior prioridade é executada
+                        current_queue = queues.Last();
                         return true;
                     }
             }
@@ -246,6 +281,12 @@ namespace System_Core
             selected.Current_priority--;
             current_user.Current_portion++;
             return selected;
+        }
+
+        // rotina para escalonar por Fila de Prioridade
+        private static Process Priority_queue()
+        {
+            return new Process(1);
         }
     }
 }
