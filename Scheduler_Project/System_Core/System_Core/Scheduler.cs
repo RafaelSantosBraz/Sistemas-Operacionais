@@ -91,13 +91,14 @@ namespace System_Core
                         ready = processes;
                         // ordena os processos pela prioridade original
                         ready.Sort((x, y) => x.Original_priority - y.Original_priority);
-                        // armazena temporariamente os 
+                        // armazena temporariamente os usuários
                         List<int> ids = new List<int>();
-                        List<int> quantify_processs = new List<int>();
-                        // copia a prioridade original para a corrente
+                        // armazena temporariamente a quantidade de processos para cada usuário
+                        List<int> quantify_processs = new List<int>();                        
                         foreach (Process aux in ready)
                         {
                             aux.Current_priority = aux.Original_priority;
+                            // atualiza o valor id e quantidade
                             if (ids.Exists(id => id == aux.Owner))
                             {
                                 quantify_processs[ids.IndexOf(aux.Owner)] += 1;
@@ -111,8 +112,12 @@ namespace System_Core
                         users = new List<User>();
                         foreach (int id in ids)
                         {
+                            // corversão para o tipo usuário
                             users.Add(new User(id, quantify_processs.ElementAt(id)));
                         }
+                        // ordena os usuários por seu ID
+                        users.Sort((x, y) => x.Id - y.Id);
+                        // primeiro ID é o executado
                         current_user = users.ElementAt(0);
                         return true;
                     }
