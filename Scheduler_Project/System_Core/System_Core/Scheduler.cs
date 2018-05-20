@@ -16,6 +16,8 @@ namespace System_Core
         private static List<int> tickets;
         // agente para sorteio de bilhetes
         private static Random agent = new Random();
+        // indica quem é o dono do processo executado por último
+        private static int current_user;
 
         // método para direcionar a tarefa de escolha do processo para uma rotina específica (regra) 
         public static Process select()
@@ -28,6 +30,8 @@ namespace System_Core
                     return Priority();
                 case 3:
                     return Lottery();
+                case 4:
+                    return Portion_fair();
                 default:
                     return null;
             }
@@ -77,6 +81,20 @@ namespace System_Core
                                 tickets.Add(ready.IndexOf(aux));
                             }
                         }
+                        return true;
+                    }
+                case 4:
+                    {
+                        // caso Fração Justa
+                        ready = processes;
+                        // ordena os processos pela prioridade original
+                        ready.Sort((x, y) => x.Original_priority - y.Original_priority);
+                        // copia a prioridade original para a corrente
+                        foreach (Process aux in ready)
+                        {
+                            aux.Current_priority = aux.Original_priority;
+                        }
+                        current_user = -1;
                         return true;
                     }
             }
@@ -152,7 +170,28 @@ namespace System_Core
         // rotina para escalar por loteria - sorteia um bilhete e retorna o processo correspondente
         private static Process Lottery()
         {
-            return ready.ElementAt(tickets.ElementAt(agent.Next(tickets.Count())));
+            if (tickets.Count == 0)
+            {
+                return null;
+            }
+            else
+            {
+                Console.WriteLine("---> Motivo de Seleção: loteria");
+                return ready.ElementAt(tickets.ElementAt(agent.Next(tickets.Count())));
+            }
+        }
+
+        // rotina para escalonar por fração justa
+        private static Process Portion_fair()
+        {
+            if (ready.Count == 0)
+            {
+                return null;
+            }
+            else
+            {
+
+            }
         }
     }
 }
