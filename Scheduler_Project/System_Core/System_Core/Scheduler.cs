@@ -9,9 +9,13 @@ namespace System_Core
     static class Scheduler
     {
         // lista dos processos em estado "pronto"
-        private static List<Process> ready = new List<Process>();
+        private static List<Process> ready;
         // define qual regra será utilizada pelo escalonador para escolha do processo
         private static int rule = 1;
+        // armazena os bilhetes dos processos para escalar por loteria
+        private static List<int> tickets;
+        // agente para sorteio de bilhetes
+        private static Random agent = new Random();
 
         // método para direcionar a tarefa de escolha do processo para uma rotina específica (regra) 
         public static Process select()
@@ -22,6 +26,8 @@ namespace System_Core
                     return FIFO();
                 case 2:
                     return Priority();
+                case 3:
+                    return Lottery();
                 default:
                     return null;
             }
@@ -55,6 +61,21 @@ namespace System_Core
                         foreach (Process aux in ready)
                         {
                             aux.Current_priority = aux.Original_priority;
+                        }
+                        return true;
+                    }
+                case 3:
+                    {
+                        // caso Loteria
+                        ready = processes;
+                        tickets = new List<int>();
+                        foreach (Process aux in ready)
+                        {
+                            // define que cada processo receberá a mesma quantidade de bilhetes que sua prioridade
+                            for (int i = 1; i <= aux.Original_priority; i++)
+                            {
+                                tickets.Add(ready.IndexOf(aux));
+                            }
                         }
                         return true;
                     }
@@ -126,6 +147,12 @@ namespace System_Core
                 selected.Current_priority--;
                 return selected;
             }
-        }       
+        }
+
+        // rotina para escalar por loteria - sorteia um bilhete e retorna o processo correspondente
+        private static Process Lottery()
+        {
+            return ready.ElementAt(tickets.ElementAt(agent.Next(tickets.Count())));
+        }
     }
 }

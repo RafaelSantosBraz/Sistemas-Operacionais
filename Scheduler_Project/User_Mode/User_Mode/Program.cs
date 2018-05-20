@@ -12,7 +12,7 @@ namespace User_Mode
         static void Main(string[] args)
         {
             // solicita (INADEQUADAMENTE! - apenas para teste!) a troca de regra ao núcleo e ao escalonador
-            Kernel.change_rule_scheduler(2);
+            Kernel.change_rule_scheduler(3);
             Console.WriteLine("Iniciando escalonador e inserindo processos... (" + Kernel.load_processes(process_generator(1)) + ")\n");
             Kernel.start_time_sharing();
             Console.ReadKey();
