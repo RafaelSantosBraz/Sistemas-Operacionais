@@ -12,8 +12,8 @@ namespace User_Mode
         static void Main(string[] args)
         {
             // solicita (INADEQUADAMENTE! - apenas para teste!) a troca de regra ao núcleo e ao escalonador
-            Kernel.change_rule_scheduler(3);
-            Console.WriteLine("Iniciando escalonador e inserindo processos... (" + Kernel.load_processes(process_generator(1)) + ")\n");            
+            Kernel.change_rule_scheduler(4);            
+            Console.WriteLine("Iniciando escalonador e inserindo processos... (" + Kernel.load_processes(process_generator(4)) + ")\n");
             Kernel.start_time_sharing();
             Console.ReadKey();
         }
@@ -25,12 +25,23 @@ namespace User_Mode
             switch (rule_type)
             {
                 case 1:
+                case 2:
+                case 3:
                     {
                         processes.Add(new Process(0) { Original_priority = 1 });
                         processes.Add(new Process(1) { Original_priority = 2 });
                         processes.Add(new Process(2) { Original_priority = 3 });
                         processes.Add(new Process(3) { Original_priority = 1 });
                         processes.Add(new Process(4) { Original_priority = 3 });
+                        break;
+                    }
+                case 4:
+                    {
+                        processes.Add(new Process(0) { Original_priority = 1, Owner = 1 });
+                        processes.Add(new Process(1) { Original_priority = 2, Owner = 1 });
+                        processes.Add(new Process(2) { Original_priority = 3, Owner = 1 });
+                        processes.Add(new Process(3) { Original_priority = 1, Owner = 2 });
+                        processes.Add(new Process(4) { Original_priority = 3, Owner = 2 });
                         break;
                     }
             }

@@ -22,7 +22,7 @@ namespace System_Core
         public static void start_time_sharing()
         {
             clock = new Timer();
-            clock.Interval = 2000;
+            clock.Interval = 6000;
             clock.Elapsed += Scheduler.schedule;
             clock.Enabled = true;            
         }

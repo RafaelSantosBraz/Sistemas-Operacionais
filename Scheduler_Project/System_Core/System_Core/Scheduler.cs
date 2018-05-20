@@ -33,7 +33,7 @@ namespace System_Core
                 case 3:
                     return Lottery();
                 case 4:
-                    return Portion_fair();               
+                    return Portion_fair();
             }
             return null;
         }
@@ -112,7 +112,7 @@ namespace System_Core
                         foreach (int id in ids)
                         {
                             // corversão para o tipo usuário
-                            users.Add(new User(id, quantify_processs.ElementAt(id)));
+                            users.Add(new User(id, quantify_processs.ElementAt(ids.IndexOf(id))));         
                         }
                         // ordena os usuários por seu ID
                         users.Sort((x, y) => x.Id - y.Id);
@@ -143,11 +143,11 @@ namespace System_Core
                 return null;
             }
             // sempre o primeiro elemento da lista            
-                Process selected = ready.ElementAt(0);
-                ready.RemoveAt(0);
-                ready.Add(selected);
-                Console.WriteLine("---> Motivo de Seleção: FIFO - primeiro elemento da lista");
-                return selected;            
+            Process selected = ready.ElementAt(0);
+            ready.RemoveAt(0);
+            ready.Add(selected);
+            Console.WriteLine("---> Motivo de Seleção: FIFO - primeiro elemento da lista");
+            return selected;
         }
 
         // rotina para escalonar por Prioridade
@@ -199,7 +199,53 @@ namespace System_Core
             {
                 return null;
             }
-            return null;
+            // usuário já atingiu sua porção máxima 
+            if (current_user.Current_portion == current_user.Max_portion)
+            {
+                // se não existir outro usuário seguinte, retorna ao primeiro
+                if (users.Last() == current_user)
+                {
+                    current_user.Current_portion = 0;
+                    current_user = users.First();
+                }
+                // se existir, apenas troca
+                else
+                {
+                    current_user.Current_portion = 0;
+                    current_user = users.ElementAt(users.IndexOf(current_user) + 1);
+                }
+            }
+            // Deve fazer a seleção por prioridade para o usuário atual
+
+            // cria uma nova lista com os processos do mesmo usuário
+            List<Process> user_processes = ready.FindAll(process => process.Owner == current_user.Id);
+            // cria uma nova lista com os processos de mesma e maior prioridade atual para o usuário
+            List<Process> bigger = user_processes.FindAll(process => process.Current_priority == user_processes.Max(process_aux => process_aux.Current_priority));
+            // ordena a nova lista por prioridade original
+            bigger.Sort((x, y) => x.Original_priority - y.Original_priority);
+            // o último elemento será o de maior prioridade, e será selecionado
+            Process selected = bigger.Last();
+            if (selected.Current_priority == 0)
+            {
+                // não há processos escalonáveis, assim deve-se rearranjar a lista do usuário atual antes de escalonar
+                foreach (Process aux in user_processes)
+                {
+                    aux.Current_priority = aux.Original_priority;
+                }
+                return select();
+            }
+            // apenas definições de motivo de seleção
+            if (bigger.Count == 1)
+            {
+                Console.WriteLine("---> Motivo de Seleção: porção justa - usuário " + selected.Owner + " - maior prioridade atual");
+                selected.Current_priority--;
+                current_user.Current_portion++;
+                return selected;
+            }
+            Console.WriteLine("---> Motivo de Seleção: porção justa - usuário " + selected.Owner + " - empate - último elemento de mesma prioridade");
+            selected.Current_priority--;
+            current_user.Current_portion++;
+            return selected;
         }
     }
 }
