@@ -1,0 +1,10 @@
+R:\GitHub\Sistemas-Operacionais\Scheduler_Project\User_Mode\User_Mode\bin\Debug\User_Mode.exe.config
+R:\GitHub\Sistemas-Operacionais\Scheduler_Project\User_Mode\User_Mode\bin\Debug\User_Mode.exe
+R:\GitHub\Sistemas-Operacionais\Scheduler_Project\User_Mode\User_Mode\bin\Debug\User_Mode.pdb
+R:\GitHub\Sistemas-Operacionais\Scheduler_Project\User_Mode\User_Mode\bin\Debug\System_Core.dll
+R:\GitHub\Sistemas-Operacionais\Scheduler_Project\User_Mode\User_Mode\bin\Debug\System_Core.pdb
+R:\GitHub\Sistemas-Operacionais\Scheduler_Project\User_Mode\User_Mode\obj\Debug\User_Mode.csprojAssemblyReference.cache
+R:\GitHub\Sistemas-Operacionais\Scheduler_Project\User_Mode\User_Mode\obj\Debug\User_Mode.csproj.CoreCompileInputs.cache
+R:\GitHub\Sistemas-Operacionais\Scheduler_Project\User_Mode\User_Mode\obj\Debug\User_Mode.csproj.CopyComplete
+R:\GitHub\Sistemas-Operacionais\Scheduler_Project\User_Mode\User_Mode\obj\Debug\User_Mode.exe
+R:\GitHub\Sistemas-Operacionais\Scheduler_Project\User_Mode\User_Mode\obj\Debug\User_Mode.pdb

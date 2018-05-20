@@ -1,0 +1,6 @@
+R:\GitHub\Sistemas-Operacionais\Scheduler_Project\System_Core\System_Core\bin\Debug\System_Core.dll
+R:\GitHub\Sistemas-Operacionais\Scheduler_Project\System_Core\System_Core\bin\Debug\System_Core.pdb
+R:\GitHub\Sistemas-Operacionais\Scheduler_Project\System_Core\System_Core\obj\Debug\System_Core.csprojAssemblyReference.cache
+R:\GitHub\Sistemas-Operacionais\Scheduler_Project\System_Core\System_Core\obj\Debug\System_Core.csproj.CoreCompileInputs.cache
+R:\GitHub\Sistemas-Operacionais\Scheduler_Project\System_Core\System_Core\obj\Debug\System_Core.dll
+R:\GitHub\Sistemas-Operacionais\Scheduler_Project\System_Core\System_Core\obj\Debug\System_Core.pdb
