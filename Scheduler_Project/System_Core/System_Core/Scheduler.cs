@@ -118,7 +118,7 @@ namespace System_Core
                         foreach (int id in ids)
                         {
                             // corversão para o tipo usuário
-                            users.Add(new User(id, quantify_processs.ElementAt(ids.IndexOf(id))));         
+                            users.Add(new User(id, quantify_processs.ElementAt(ids.IndexOf(id))));
                         }
                         // ordena os usuários por seu ID
                         users.Sort((x, y) => x.Id - y.Id);
@@ -136,7 +136,6 @@ namespace System_Core
                         List<int> queues_priorities = new List<int>();
                         foreach (Process aux in ready)
                         {
-                            aux.Current_priority = aux.Original_priority;
                             // atualiza a prioridade da lista, caso não exista
                             if (!queues_priorities.Exists(queue => queue == aux.Original_priority))
                             {
@@ -286,7 +285,42 @@ namespace System_Core
         // rotina para escalonar por Fila de Prioridade
         private static Process Priority_queue()
         {
-            return new Process(1);
+            if (queues.Count == 0)
+            {
+                return null;
+            }
+            // fila já atingiu sua cota máxima de ciclos 
+            if (current_queue.Current_cycle == current_queue.Maximum_cycles)
+            {
+                // se não existir outra fila seguinte, retorna à última
+                if (queues.First() == current_queue)
+                {
+                    current_queue.Current_cycle = 0;
+                    current_queue.Current_process = null;
+                    current_queue = queues.Last();
+                }
+                // se existir, apenas troca
+                else
+                {
+                    current_queue.Current_cycle = 0;
+                    current_queue = queues.ElementAt(queues.IndexOf(current_queue) - 1);
+                }
+            }
+            // cria uma nova lista com os processos da mesma lista corrente
+            List<Process> queue_processes = ready.FindAll(process => process.Original_priority == current_queue.Priority_of_list);
+            // se não existir outra processo seguinte, retorna ao primeiro
+            if (queue_processes.Last() == current_queue.Current_process)
+            {                
+                current_queue.Current_process = queue_processes.First();
+            }
+            // se existir, apenas troca
+            else
+            {
+                current_queue.Current_process = queue_processes.ElementAt(queue_processes.IndexOf(current_queue.Current_process) + 1);
+            }                        
+            Console.WriteLine("---> Motivo de Seleção: fila de prioridade - processo na posição atual da fila");
+            current_queue.Current_cycle++;
+            return current_queue.Current_process;
         }
     }
 }
