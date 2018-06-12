@@ -41,6 +41,6 @@ namespace System_Core
             }
             control_variable--;
             return waiting.Dequeue();
-        }       
+        }                   
     }
 }
