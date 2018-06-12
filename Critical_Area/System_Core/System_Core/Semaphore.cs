@@ -13,13 +13,12 @@ namespace System_Core
         private int control_variable;
         // fila de processos em espera para a região crítica
         private Queue<Process> waiting; 
+
         public Semaphore()
         {
             control_variable = -1;
             waiting = new Queue<Process>();
-        }
-
-        // get e set
+        }     
 
         // carrega um processo na lista de espera
         public void load_process(Process process)
@@ -28,6 +27,20 @@ namespace System_Core
             control_variable++;
         }
 
-       
+        // determina qual é o próximo processo a assumir a CPU
+        public Process next()
+        {
+            if (control_variable == -1)
+            {
+                return null;
+            }
+            if (control_variable == 0)
+            {
+                control_variable--;
+                return null;
+            }
+            control_variable--;
+            return waiting.Dequeue();
+        }       
     }
 }
