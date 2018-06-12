@@ -10,7 +10,7 @@ namespace System_Core
     class Semaphore
     {
         // controla quantos processos estão na lista de execução e indica se algum está sendo processado
-        private int control_variable;
+        public int control_variable { get; set; }
         // fila de processos em espera para a região crítica
         private Queue<Process> waiting; 
 
@@ -24,7 +24,14 @@ namespace System_Core
         public void load_process(Process process)
         {
             waiting.Enqueue(process);
-            control_variable++;
+            if (control_variable > 0)
+            {
+                control_variable++;
+            }
+            else
+            {
+                control_variable = 1;
+            }
         }
 
         // determina qual é o próximo processo a assumir a CPU

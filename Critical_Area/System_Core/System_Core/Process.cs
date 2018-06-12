@@ -22,7 +22,7 @@ namespace System_Core
         // método de execução de cada processo
         public void execute()
         {
-            Console.WriteLine("Executando o Processo " + UUID1 + "...\n");
+            Console.WriteLine("Executando o Processo " + UUID1 + "...");
         }      
     }
 }

@@ -44,6 +44,7 @@ namespace System_Core
             {
                 Console.WriteLine("Sem Processos para Execução!");
             }
+            Console.WriteLine("Variável de Controle: " + semaphore.control_variable + "\n");
         }
 
         // apenas faz o cancelamento do cronômetro
