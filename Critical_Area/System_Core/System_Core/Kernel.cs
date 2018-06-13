@@ -13,6 +13,10 @@ namespace System_Core
         private static Timer clock;
         // instância de Semáforo para controlar a região crítica -- poderiam existir múltiplas regiões críticas
         private static Semaphore semaphore = new Semaphore();
+        // instância para controlar uma região crítica do tipo Produtor-Consumirdor -- poderiam existir múltiplas regiões críticas
+        private static Producer_Consumer producer_consumer = null;
+        // indica qual região crítica terá atenção da CPU no momento -- true é o Semáforo
+        private static bool operation_mode = true;
 
         // envio dos processos de alto nível para organização interna em baixo nível
         public static void load_processes(List<Process> processes)
@@ -21,6 +25,7 @@ namespace System_Core
             {
                 semaphore.load_process(aux);
             }
+            operation_mode = true;
         }        
 
         // responsável por inicializar os atributos do cronômetro
@@ -35,16 +40,24 @@ namespace System_Core
         // faz a chamada do semáforo e coloca o processo para execução na CPU
         private static void get_next_process(object sender, ElapsedEventArgs e)
         {
-            Process aux = semaphore.next();
-            if (aux != null)
+            if (operation_mode)
             {
-                aux.execute();
+                Process aux = semaphore.next();
+                if (aux != null)
+                {
+                    aux.execute();
+                }
+                else
+                {
+                    Console.WriteLine("Sem Processos para Execução!");
+                }
+                Console.WriteLine("Variável de Controle: " + semaphore.control_variable + "\n");
             }
             else
             {
-                Console.WriteLine("Sem Processos para Execução!");
+                producer_consumer.transfer_control();
             }
-            Console.WriteLine("Variável de Controle: " + semaphore.control_variable + "\n");
+            
         }
 
         // apenas faz o cancelamento do cronômetro
@@ -53,10 +66,11 @@ namespace System_Core
             clock.Enabled = false;
         }
 
-        //// solicita a mudança de regra ao escalonador
-        //public static bool change_rule_scheduler(int new_rule)
-        //{
-        //    return Scheduler.change_rule(new_rule);
-        //}
+        // instancia um novo Produtor-Consumidor
+        public static void load_producer_consumer(Process producer, Process consumer)
+        {
+            operation_mode = false;
+            producer_consumer = new Producer_Consumer((Producer)producer, (Consumer)consumer);                        
+        }
     }
 }

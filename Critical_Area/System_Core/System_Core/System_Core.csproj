@@ -40,8 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Consumer.cs" />
     <Compile Include="Kernel.cs" />
     <Compile Include="Process.cs" />
+    <Compile Include="Producer.cs" />
+    <Compile Include="Producer_Consumer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Semaphore.cs" />
   </ItemGroup>
