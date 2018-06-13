@@ -67,10 +67,10 @@ namespace System_Core
         }
 
         // instancia um novo Produtor-Consumidor
-        public static void load_producer_consumer(Process producer, Process consumer)
+        public static void load_producer_consumer(Producer producer, Consumer consumer)
         {
             operation_mode = false;
-            producer_consumer = new Producer_Consumer((Producer)producer, (Consumer)consumer);                        
+            producer_consumer = new Producer_Consumer(producer, consumer);                        
         }
     }
 }

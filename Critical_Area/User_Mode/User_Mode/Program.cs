@@ -11,14 +11,24 @@ namespace User_Mode
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Inicializando Região Crítica");
-            List<Process> aux = new List<Process>();
-            for (int i = 0; i < 3; i++)
+            int op = Console.Read();
+            if (op == '0')
             {
-                aux.Add(new Process(i));
-            }            
-            Kernel.load_processes(aux);
-            Kernel.start_time_control();
+                Console.WriteLine("Inicializando Região Crítica -- Semáforo");
+                List<Process> aux = new List<Process>();
+                for (int i = 0; i < 3; i++)
+                {
+                    aux.Add(new Process(i));
+                }
+                Kernel.load_processes(aux);
+                Kernel.start_time_control();
+            }
+            else
+            {
+                Console.WriteLine("Inicializando Região Crítica -- Produtor-Consumidor");                
+                Kernel.load_producer_consumer(new Producer(0), new Consumer(1));
+                Kernel.start_time_control();
+            }
             Console.ReadKey();
         }
     }
