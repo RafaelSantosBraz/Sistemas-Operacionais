@@ -16,7 +16,12 @@ namespace System_Core
         public void execute(List<int> input)
         {
             execute();
-            Console.WriteLine("Consumidos: " + input.ToString());
+            String aux = "";
+            foreach (int number in input)
+            {
+                aux += number + " ";
+            }
+            Console.WriteLine("Consumidos: " + aux + "\n");
         }
     }
 }

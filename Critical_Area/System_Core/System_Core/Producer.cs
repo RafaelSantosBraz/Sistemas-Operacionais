@@ -22,7 +22,12 @@ namespace System_Core
             {
                 aux.Add(random.Next(0, 99));
             }
-            Console.WriteLine("Produzidos: " + aux.ToString());
+            String content = "";
+            foreach (int number in aux)
+            {
+                content += number + " ";
+            }
+            Console.WriteLine("Produzidos: " + content + "\n");
             return aux;
         }
     }
