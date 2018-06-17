@@ -14,7 +14,7 @@ namespace System_Core
         // instância de Semáforo para controlar a região crítica -- poderiam existir múltiplas regiões críticas
         private static Semaphore semaphore = new Semaphore();
         // instância para controlar uma região crítica do tipo Produtor-Consumirdor -- poderiam existir múltiplas regiões críticas
-        private static Producer_Consumer producer_consumer = null;
+        private static Queue<Producer_Consumer> producer_consumer = new Queue<Producer_Consumer>();
         // indica qual região crítica terá atenção da CPU no momento -- true é o Semáforo
         private static bool operation_mode = true;
 
@@ -55,7 +55,17 @@ namespace System_Core
             }
             else
             {
-                producer_consumer.transfer_control();
+                Producer_Consumer aux = null;
+                if (!producer_consumer.First().Status())
+                {
+                   aux = producer_consumer.Dequeue();
+                   producer_consumer.Enqueue(aux);
+                }  
+                else
+                {
+                    aux = producer_consumer.First();
+                }
+                aux.transfer_control();
             }
             
         }
@@ -70,7 +80,7 @@ namespace System_Core
         public static void load_producer_consumer(Producer producer, Consumer consumer)
         {
             operation_mode = false;
-            producer_consumer = new Producer_Consumer(producer, consumer);                        
+            producer_consumer.Enqueue(new Producer_Consumer(producer, consumer));
         }
     }
 }

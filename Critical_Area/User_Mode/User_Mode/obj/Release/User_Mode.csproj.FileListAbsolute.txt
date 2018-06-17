@@ -7,3 +7,4 @@ R:\GitHub\Sistemas-Operacionais\Critical_Area\User_Mode\User_Mode\obj\Release\Us
 R:\GitHub\Sistemas-Operacionais\Critical_Area\User_Mode\User_Mode\obj\Release\User_Mode.csproj.CopyComplete
 R:\GitHub\Sistemas-Operacionais\Critical_Area\User_Mode\User_Mode\obj\Release\User_Mode.exe
 R:\GitHub\Sistemas-Operacionais\Critical_Area\User_Mode\User_Mode\obj\Release\User_Mode.pdb
+R:\GitHub\Sistemas-Operacionais\Critical_Area\User_Mode\User_Mode\obj\Release\User_Mode.csprojAssemblyReference.cache

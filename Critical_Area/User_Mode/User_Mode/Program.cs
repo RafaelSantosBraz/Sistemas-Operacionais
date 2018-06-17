@@ -27,6 +27,7 @@ namespace User_Mode
             {
                 Console.WriteLine("Inicializando Região Crítica -- Produtor-Consumidor");                
                 Kernel.load_producer_consumer(new Producer(0), new Consumer(1));
+                Kernel.load_producer_consumer(new Producer(2), new Consumer(3));
                 Kernel.start_time_control();
             }
             Console.ReadKey();

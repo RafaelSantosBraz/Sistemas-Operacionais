@@ -35,5 +35,11 @@ namespace System_Core
             }
             status = !status;
         }
+
+        // método GET para o status da produção/consumo
+        public bool Status()
+        {
+            return status;
+        }
     }
 }
