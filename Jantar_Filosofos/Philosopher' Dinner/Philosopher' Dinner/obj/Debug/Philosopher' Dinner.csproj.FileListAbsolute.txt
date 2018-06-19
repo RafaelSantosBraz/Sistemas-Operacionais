@@ -1,0 +1,7 @@
+R:\GitHub\Sistemas-Operacionais\Jantar_Filosofos\Philosopher' Dinner\Philosopher' Dinner\bin\Debug\Philosopher' Dinner.exe.config
+R:\GitHub\Sistemas-Operacionais\Jantar_Filosofos\Philosopher' Dinner\Philosopher' Dinner\bin\Debug\Philosopher' Dinner.exe
+R:\GitHub\Sistemas-Operacionais\Jantar_Filosofos\Philosopher' Dinner\Philosopher' Dinner\bin\Debug\Philosopher' Dinner.pdb
+R:\GitHub\Sistemas-Operacionais\Jantar_Filosofos\Philosopher' Dinner\Philosopher' Dinner\obj\Debug\Philosopher' Dinner.csprojAssemblyReference.cache
+R:\GitHub\Sistemas-Operacionais\Jantar_Filosofos\Philosopher' Dinner\Philosopher' Dinner\obj\Debug\Philosopher' Dinner.csproj.CoreCompileInputs.cache
+R:\GitHub\Sistemas-Operacionais\Jantar_Filosofos\Philosopher' Dinner\Philosopher' Dinner\obj\Debug\Philosopher' Dinner.exe
+R:\GitHub\Sistemas-Operacionais\Jantar_Filosofos\Philosopher' Dinner\Philosopher' Dinner\obj\Debug\Philosopher' Dinner.pdb
