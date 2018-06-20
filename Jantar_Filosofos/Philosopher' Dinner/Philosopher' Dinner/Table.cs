@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Philosopher__Dinner
 {
-    class Program
+    class Table
     {
         static void Main(string[] args)
         {
