@@ -8,6 +8,8 @@ namespace Philosopher__Dinner
 {
     public class Fork
     {
+        // indica o garfo
+        private int ID;
         // variável do semáforo binário que controla o acesso ao garfo
         private bool control_variable;
         // indica qual é o filósofo que é o dono atual do garfo -- que pode utilizá-lo
@@ -15,8 +17,9 @@ namespace Philosopher__Dinner
         // lista de espera para utilizar o garfo
         private Queue<Philosopher> philosophers_waiting;
 
-        public Fork()
+        public Fork(int ID)
         {
+            this.ID = ID;
             control_variable = false;
             current_owner = null;
             philosophers_waiting = new Queue<Philosopher>();
