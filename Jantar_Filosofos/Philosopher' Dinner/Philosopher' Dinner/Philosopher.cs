@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Timers;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Philosopher__Dinner
@@ -15,8 +15,6 @@ namespace Philosopher__Dinner
         private Fork first_fork;
         // indica qual é o segundo garfo que o filósofo precisa para comer
         private Fork second_fork;
-        // cronômetro para o filósofo comer
-        private Timer clock;
 
         public Philosopher(int iD, Fork first_fork, Fork second_fork)
         {
@@ -40,23 +38,16 @@ namespace Philosopher__Dinner
         private void start_eating()
         {
             Console.WriteLine("Filósofo " + ID + " está comendo agora!");
-            eating();
-        }
-
-        // inicia o perído em que o filósofo está comendo
-        private void eating()
-        {
-            clock = new Timer();
-            clock.Interval = 5000;
-            clock.Elapsed += end_eating;
-            clock.Enabled = true;
+            Timer clock = new Timer(new TimerCallback(end_eating));
+            clock.Change(5000, 0);
         }
 
         // faz o filósofo parar de comer
-        private void end_eating(object sender, ElapsedEventArgs e)
+        private void end_eating(object state)
         {
-            clock.Enabled = false;
-            Console.WriteLine("Filósofo " + ID + " parou de comer!");
+            Timer clock = (Timer)state;
+            clock.Dispose();
+            Console.WriteLine("-----------------------------------> Filósofo " + ID + " parou de comer!");
             // liberar os garfos
             first_fork.free_fork(this);
             second_fork.free_fork(this);
@@ -67,16 +58,15 @@ namespace Philosopher__Dinner
         // filósofo está pensando antes de precisar comer novamente
         private void start_thinking()
         {
-            clock = new Timer();
-            clock.Interval = 2000;
-            clock.Elapsed += end_thinking;
-            clock.Enabled = true;
+            Timer clock = new Timer(new TimerCallback(end_thinking));
+            clock.Change(2000, 0);
         }
 
         // filósofo já quer comer novamente -- se insere na lista para os garfos que precisa
-        private void end_thinking(object sender, ElapsedEventArgs e)
+        private void end_thinking(object state)
         {
-            clock.Enabled = false;
+            Timer clock = (Timer)state;
+            clock.Dispose();
             first_fork.insert_philosopher(this);
             second_fork.insert_philosopher(this);
         }

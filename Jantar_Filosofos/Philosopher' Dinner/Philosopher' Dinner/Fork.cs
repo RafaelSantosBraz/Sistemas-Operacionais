@@ -22,7 +22,7 @@ namespace Philosopher__Dinner
             this.ID = ID;
             control_variable = false;
             current_owner = null;
-            philosophers_waiting = new Queue<Philosopher>();
+            philosophers_waiting = new Queue<Philosopher>();            
         }
 
         // indica que um filósofo deseja uilizar o garfo
