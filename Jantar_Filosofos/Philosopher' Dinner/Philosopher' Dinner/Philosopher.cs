@@ -23,6 +23,7 @@ namespace Philosopher__Dinner
             ID = iD;
             this.first_fork = first_fork;
             this.second_fork = second_fork;
+            start_thinking();
         }
 
         // método para receber mensagem do garfo para verificar a dependência
@@ -75,6 +76,7 @@ namespace Philosopher__Dinner
         // filósofo já quer comer novamente -- se insere na lista para os garfos que precisa
         private void end_thinking(object sender, ElapsedEventArgs e)
         {
+            clock.Enabled = false;
             first_fork.insert_philosopher(this);
             second_fork.insert_philosopher(this);
         }
